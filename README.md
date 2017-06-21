@@ -1,6 +1,5 @@
 Github Profile Viewer!
 ===================
---------
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). It is a single page Web application built to demonstrate use of React with Javascript ES6.
 
 The Profile viewer was developed as a part of React learning. The main task of this web application is to search for users in Github database and return the user list based on popularity.
@@ -13,13 +12,13 @@ The IDE used was WebStorm by Intellij.
 Steps for usage:
 -----
 1. Enter the Username you wish to search in the text-box and hit Enter.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/github-logo.deebd290.png)
+![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer1.jpg)
 
 2. Click on the username to browse details.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/github-logo.deebd290.png)
+![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer2.jpg)
 
 3. Browse next 30 users by clicking on the next button.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/github-logo.deebd290.png)
+![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer3.jpg)
 
 
 -------
