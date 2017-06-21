@@ -12,7 +12,8 @@ class Search extends Component{
     constructor(){
         super();
         this.state = {
-            prof : false
+            prof : false,
+            page : 1
         }
     }
 
@@ -24,17 +25,32 @@ class Search extends Component{
     }
 
     getData(e){
-        let profName = e.target.profName.value;
-        console.log(`https://api.github.com/search/users?q=${profName}&sort=followers`);
+        let u=``;
+        let profName=``;
+        if(e.target.innerText=="Next"){
+            let pg = this.state.page+1;
+            this.setState({page:this.state.page+1});
+            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+        }else if(e.target.innerText=="Prev"){
+            let pg = this.state.page-1;
+            this.setState({page:this.state.page-1});
+            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+        }else{
+            profName = e.target.profName.value;
+            u=`https://api.github.com/search/users?q=${profName}&sort=followers&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+            this.pageantion();
+            this.setState({user:profName, page:1});
+        }
+        console.log(u);
         e.preventDefault();
-        // return false;
         $.get({
-            url:`https://api.github.com/search/users?q=${profName}&sort:followers`,
+            url:u,
             dataType: 'json',
+            Authorization: 'token b920bd1783e4e51480fc70d5a17932a1ac7c7b26',
             success : (response) => {
-                let disp = response.items.map(li => {
+                let disp = response.items.map((li,i) => {
                     return(
-                        <li><a href="javascript:void(0)" onClick={this.setNewUser.bind(this,li.url)}>{li.login}</a></li>
+                        <li key={i}><a href="javascript:void(0)" onClick={this.setNewUser.bind(this,li.url)}>{li.login}</a></li>
                     );
                 });
                 console.log(disp);
@@ -51,11 +67,26 @@ class Search extends Component{
         });
     }
 
+    pageantion(){
+        if (this.state.page==1)
+            $("#prev").prop('disabled',true);
+        else
+            $("#prev").prop('disabled',false);
+    }
+
+    componentWillUpdate(){
+        this.pageantion();
+    }
+    componentDidUpdate(){
+        this.pageantion();
+    }
+
+
     render(){
         return (
             <div className="main">
-                <form onSubmit={this.getData.bind(this)}>
-                    <input type="text" name="profName"/>
+                <form onSubmit={this.getData.bind(this)} autoComplete="off">
+                    <input type="text" placeholder="Enter the Username you wish to search on Github" name="profName"/>
                     <input type="submit" value="submit"/>
                 </form>
 
@@ -64,12 +95,16 @@ class Search extends Component{
                             <div className="Search-contents">
                                 <div className="result-box">
                                     <ul>{this.state.profData}</ul>
+                                    <div className="pagenation">
+                                        <button id="prev" className="page-btn" onClick={this.getData.bind(this)}>Prev</button>
+                                        <button id="next" className="page-btn" onClick={this.getData.bind(this)}>Next</button>
+                                    </div>
                                 </div>
                                 <div className="result-user">
                                     <SingleUser user={this.state.currUser}/>
                                 </div>
                             </div>
-                            ): <div>Data to be loaded</div>
+                            ): <div><p className="lead">The profile details will be loaded here</p></div>
                     }
             </div>
         );

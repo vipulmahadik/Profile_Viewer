@@ -23,10 +23,53 @@
 
 .App-intro {
     margin-top: 120px;
-    font-size: medium;
 }
 
 body{
-
+    font-size: small;
+    font-family: 'Roboto',Arial;
     background-color: antiquewhite;
+}
+
+.lead{
+
+    font-family: roboto;
+    font-weight: 300;
+    font-size: large;
+}
+
+
+a {
+  color: #0ba6a9;
+  text-decoration: none;
+  font-family: roboto;
+}
+
+a:hover {
+    color: #564040;
+}
+
+.pagenation{
+    padding-bottom: 20px;
+}
+
+
+button {
+    width: 40%;
+}
+button:hover {
+    background-color: #c56060;
+}
+button#prev {
+    border-left: 5px solid #ab3c3c;
+}
+button#next {
+    border-right: 5px solid #ab3c3c;
+}
+.page-btn {
+  padding: 7px 12px;
+  margin: 0;
+  border: none;
+  background: #cb4e4e;
+  color: white;
 }
