@@ -19,6 +19,7 @@
     text-align: center;
     margin: 0;
     padding:10px 0;
+    z-index:2;
 }
 
 .App-intro {
@@ -28,8 +29,12 @@
 body{
     font-size: small;
     font-family: 'Roboto',Arial;
-    background-color: antiquewhite;
+    /*background-color: antiquewhite;*/
+    background-color: #b7effd;
+    background-image: url("https://www.transparenttextures.com/patterns/absurdity.png");
+    /* This is mostly intended for prototyping; please download the pattern and re-host for production environments. Thank you! */
 }
+
 
 .lead{
 

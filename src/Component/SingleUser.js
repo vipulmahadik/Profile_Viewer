@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import './SingleUser.css'
 import {data2} from '../json/vipul';
+import Repos from './Repos';
 
 class SingleUser extends Component{
 
@@ -35,7 +36,7 @@ class SingleUser extends Component{
                                 <img className="prof" src={response.avatar_url} alt=""/>
                             </div>
                             <div className="info-div-name">
-                                <h2>{response.name}</h2>
+                                <p className="title">{response.name}</p>
                             </div>
                         </div>
 
@@ -54,6 +55,8 @@ class SingleUser extends Component{
                                 </tbody>
                             </table>
                         </div>
+                        <p className="title">Repositories</p>
+                        <Repos url={response.repos_url}/>
                     </div>
                 });
             },

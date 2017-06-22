@@ -10,7 +10,7 @@
 
 
 .contents{
-    margin: 20px;
+    margin: 0 20px;
     padding:15px;
     box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.43);
     -webkit-border-radius: 10px;
@@ -99,6 +99,48 @@ td:nth-child(2n+1){
 td:nth-child(2n){
     width: 70%;
 }
+.nodisp{
+    display: none;
+}
+
+.repos-box{
+    position: relative;
+}
+.timestamp{
+    position: absolute;
+    top:0;
+    right:0;
+}
+.title{
+    display: inline-block;
+    font-size: x-large;
+    font-weight: 300;
+    width: 65%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.repo{
+    text-align: left;
+}
+.repo-divider{border: 0;
+    border-top: 1px solid #f3eded;
+}
+.proj_link{
+    float: right;
+    padding: 5px 15px;
+    background-color: #e4e3e3;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+    border-bottom: 2px solid #62bfce;
+}
+.description{
+    display: inline-block;
+    width: calc(100% - 100px);
+}
+
 
 
 @media only screen and (max-width: 768px) {
@@ -108,6 +150,8 @@ td:nth-child(2n){
         position: absolute;
         left: 0;
         transition: all 1s;
+        border-radius: 0;
+        box-shadow: 0 0 0 black;
     }
     .onscreen{
         left:-110%;
@@ -121,6 +165,7 @@ td:nth-child(2n){
         font-size: large;
     }
     .result-user{
+        margin-top: 10px;
         width: 100%;
     }
     .contents{
@@ -132,8 +177,7 @@ td:nth-child(2n){
 }
 @media only screen and (min-width: 768px) {
     .result-box{
-        margin: 20PX;
-        width:25%;
+        width:30%;
     }
     .revealer{
         display: none;

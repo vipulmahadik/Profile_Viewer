@@ -14,7 +14,8 @@ class Search extends Component{
         this.state = {
             prof : false,
             page : 1,
-            sideB: 0
+            sideB: 0,
+            msg: "The profile details will be loaded here"
         }
     }
 
@@ -49,19 +50,35 @@ class Search extends Component{
             dataType: 'json',
             Authorization: 'token b920bd1783e4e51480fc70d5a17932a1ac7c7b26',
             success : (response) => {
-                let disp = response.items.map((li,i) => {
-                    return(
-                        <li key={i}><a href="javascript:void(0)" onClick={this.setNewUser.bind(this,li.url)}>{li.login}</a></li>
-                    );
-                });
-                console.log(disp);
-                this.setState({
-                    prof: true,
-                    profData: disp,
-                    currUser: response.items[0].url
-                });
-                console.log(data);
-                setTimeout(this.sidebar,500);
+                console.log(response);
+                if (response.total_count>0){
+                    let disp = response.items.map((li,i) => {
+                        return(
+                            <li key={i}><a href="javascript:void(0)" onClick={this.setNewUser.bind(this,li.url)}>{li.login}</a></li>
+                        );
+                    });
+                    if(response.items.length<30)
+                        $("#next").addClass("nodisp");
+                    else
+                        $("#next").removeClass("nodisp");
+                    if (response.items.length==0){
+                        this.setState({
+                            prof:false,
+                            msg:"No more users"});
+                    }else{
+                        this.setState({
+                            prof: true,
+                            profData: disp,
+                            currUser: response.items[0].url
+                        });
+                    }
+                    setTimeout(this.sidebar,500);
+                }else{
+                    this.setState({
+                        prof: false,
+                        msg: "No user found by that name!"
+                    })
+                }
             },
             error: (err, xhr, status)=> {
                 console.log("err");
@@ -71,9 +88,9 @@ class Search extends Component{
 
     pageantion(){
         if (this.state.page==1)
-            $("#prev").prop('disabled',true);
+            $("#prev").addClass("nodisp");
         else
-            $("#prev").prop('disabled',false);
+            $("#prev").removeClass("nodisp");
     }
 
     componentWillUpdate(){
@@ -101,6 +118,7 @@ class Search extends Component{
                         this.state.prof ? (
                             <div className="Search-contents">
                                 <div id="sidebar" className="result-box">
+                                    <p className="title">Search Results</p>
                                     <ul>{this.state.profData}</ul>
                                     <div className="pagenation">
                                         <button id="prev" className="page-btn" onClick={this.getData.bind(this)}>Prev</button>
@@ -111,7 +129,7 @@ class Search extends Component{
                                     <SingleUser user={this.state.currUser}/>
                                 </div>
                             </div>
-                            ): <div><p className="lead">The profile details will be loaded here</p></div>
+                            ): <div><p className="lead">{this.state.msg}</p></div>
                     }
             </div>
         );
