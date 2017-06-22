@@ -13,7 +13,8 @@ class Search extends Component{
         super();
         this.state = {
             prof : false,
-            page : 1
+            page : 1,
+            sideB: 0
         }
     }
 
@@ -21,7 +22,7 @@ class Search extends Component{
         console.log(e);
         this.setState({
             currUser:e
-        });
+        },this.sidebar);
     }
 
     getData(e){
@@ -60,6 +61,7 @@ class Search extends Component{
                     currUser: response.items[0].url
                 });
                 console.log(data);
+                setTimeout(this.sidebar,500);
             },
             error: (err, xhr, status)=> {
                 console.log("err");
@@ -81,10 +83,15 @@ class Search extends Component{
         this.pageantion();
     }
 
+    sidebar(e){
+        $('.result-box').toggleClass("onscreen");
+    }
 
     render(){
         return (
             <div className="main">
+                <a href="javascript:void(0)" className="revealer" onClick={this.sidebar.bind(this)}><i className="fa fa-bars" aria-hidden="true"/>
+                </a>
                 <form onSubmit={this.getData.bind(this)} autoComplete="off">
                     <input type="text" placeholder="Enter the Username you wish to search on Github" name="profName"/>
                     <input type="submit" value="submit"/>
@@ -93,7 +100,7 @@ class Search extends Component{
                     {
                         this.state.prof ? (
                             <div className="Search-contents">
-                                <div className="result-box">
+                                <div id="sidebar" className="result-box">
                                     <ul>{this.state.profData}</ul>
                                     <div className="pagenation">
                                         <button id="prev" className="page-btn" onClick={this.getData.bind(this)}>Prev</button>
