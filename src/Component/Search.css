@@ -115,14 +115,17 @@ td:nth-child(2n){
     display: inline-block;
     font-size: x-large;
     font-weight: 300;
-    width: 65%;
-    white-space: nowrap;
+    width: 80%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
 
 .repo{
     text-align: left;
+}
+.repo .title{
+    white-space: nowrap;
+    width: 65%;
 }
 .repo-divider{border: 0;
     border-top: 1px solid #f3eded;
