@@ -143,6 +143,9 @@ td:nth-child(2n){
     display: inline-block;
     width: calc(100% - 100px);
 }
+.fixe{
+    overflow: hidden;
+}
 
 
 
@@ -155,6 +158,7 @@ td:nth-child(2n){
         transition: all 1s;
         border-radius: 0;
         box-shadow: 0 0 0 black;
+        z-index:5;
     }
     .onscreen{
         left:-110%;

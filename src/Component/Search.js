@@ -23,7 +23,7 @@ class Search extends Component{
         console.log(e);
         this.setState({
             currUser:e
-        },this.sidebar);
+        },this.sidebar.bind(this,0));
     }
 
     getData(e){
@@ -57,10 +57,8 @@ class Search extends Component{
                             <li key={i}><a href="javascript:void(0)" onClick={this.setNewUser.bind(this,li.url)}>{li.login}</a></li>
                         );
                     });
-                    if(response.items.length<30)
-                        $("#next").addClass("nodisp");
-                    else
-                        $("#next").removeClass("nodisp");
+                    console.log(response.items.length);
+                    this.pageantionv2.call(this,response.items.length);
                     if (response.items.length==0){
                         this.setState({
                             prof:false,
@@ -72,7 +70,7 @@ class Search extends Component{
                             currUser: response.items[0].url
                         });
                     }
-                    setTimeout(this.sidebar,500);
+                    setTimeout(this.sidebar.bind(this,0),500);
                 }else{
                     this.setState({
                         prof: false,
@@ -93,6 +91,13 @@ class Search extends Component{
             $("#prev").removeClass("nodisp");
     }
 
+    pageantionv2(len){
+        if (len<30)
+            $("#next").addClass("nodisp");
+        else
+            $("#next").removeClass("nodisp");
+    }
+
     componentWillUpdate(){
         this.pageantion();
     }
@@ -101,13 +106,18 @@ class Search extends Component{
     }
 
     sidebar(e){
-        $('.result-box').toggleClass("onscreen");
+        if (e==0 && $('.result-box').hasClass("onscreen")){
+
+        }else{
+            $('.result-box').toggleClass("onscreen");
+            $('html, body').animate({scrollTop : 0},800);
+        }
     }
 
     render(){
         return (
             <div className="main">
-                <a href="javascript:void(0)" className="revealer" onClick={this.sidebar.bind(this)}><i className="fa fa-bars" aria-hidden="true"/>
+                <a href="javascript:void(0)" className="revealer" onClick={this.sidebar.bind(this,1)}><i className="fa fa-bars" aria-hidden="true"/>
                 </a>
                 <form onSubmit={this.getData.bind(this)} autoComplete="off">
                     <input type="text" placeholder="Enter the Username you wish to search on Github" name="profName"/>
@@ -125,7 +135,7 @@ class Search extends Component{
                                         <button id="next" className="page-btn" onClick={this.getData.bind(this)}>Next</button>
                                     </div>
                                 </div>
-                                <div className="result-user">
+                                <div className="result-user ">
                                     <SingleUser user={this.state.currUser}/>
                                 </div>
                             </div>
