@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import './SingleUser.css'
 import {data2} from '../json/vipul';
+import key from '../json/keys';
 import Repos from './Repos';
 
 class SingleUser extends Component{
@@ -23,9 +24,8 @@ class SingleUser extends Component{
         console.log("Got new");
         let op=null;
         $.ajax({
-            url: url+"?&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05",
+            url: url+`?&access_token=${key}`,
             dataType: 'json',
-            Authorization: 'token b920bd1783e4e51480fc70d5a17932a1ac7c7b26',
             success: (response) => {
                 console.dir(response);
 

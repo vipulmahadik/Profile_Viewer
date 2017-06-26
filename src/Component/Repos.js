@@ -4,6 +4,7 @@
 
 import React, {Component} from 'react';
 import $ from 'jquery';
+import key from '../json/keys';
 import {IntlProvider, FormattedDate} from 'react-intl';
 
 class Repos extends Component{
@@ -25,7 +26,7 @@ class Repos extends Component{
     update(newprops){
         let url = newprops.url;
         $.get({
-            url: url+"?&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05",
+            url: url+`?&access_token=${key}`,
             dataType: 'json',
             success: (response)=>{
                 let op = response.map((obj,i)=>{

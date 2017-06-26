@@ -5,6 +5,7 @@ import React, {Component} from 'react';
 import './Search.css';
 import SingleUser from './SingleUser';
 import $ from 'jquery';
+import key from '../json/keys';
 import data from'../json/vipul.js';
 
 class Search extends Component{
@@ -32,14 +33,14 @@ class Search extends Component{
         if(e.target.innerText=="Next"){
             let pg = this.state.page+1;
             this.setState({page:this.state.page+1});
-            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=${key}`;
         }else if(e.target.innerText=="Prev"){
             let pg = this.state.page-1;
             this.setState({page:this.state.page-1});
-            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+            u=`https://api.github.com/search/users?q=${this.state.user}&sort=followers&page=${pg}&access_token=${key}`;
         }else{
             profName = e.target.profName.value;
-            u=`https://api.github.com/search/users?q=${profName}&sort=followers&access_token=7881fe80c7eb9fe6cec0c5348a94ce39e04baa05`;
+            u=`https://api.github.com/search/users?q=${profName}&sort=followers&access_token=${key}`;
             this.pageantion();
             this.setState({user:profName, page:1});
         }
@@ -48,7 +49,6 @@ class Search extends Component{
         $.get({
             url:u,
             dataType: 'json',
-            Authorization: 'token b920bd1783e4e51480fc70d5a17932a1ac7c7b26',
             success : (response) => {
                 console.log(response);
                 if (response.total_count>0){
