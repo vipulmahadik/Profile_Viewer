@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import logo from './img/github-logo.png';
-import a from './img/Profile_Viewer1.jpg';
-import b from './img/Profile_Viewer2.jpg';
-import c from './img/Profile_Viewer3.jpg';
 import './App.css';
 import Search from './Component/Search';
 

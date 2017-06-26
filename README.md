@@ -12,13 +12,13 @@ The IDE used was WebStorm by Intellij.
 Steps for usage:
 -----
 1. Enter the Username you wish to search in the text-box and hit Enter.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer1.44b68984.jpg)
+![enter image description here](https://raw.github.com/vipulmahadik/ReactJS_Github_Profile_Viewer/master/src/img/Profile_Viewer1.jpg)
 
 2. Click on the username to browse details.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer2.95990ffc.jpg)
+![enter image description here](https://raw.github.com/vipulmahadik/ReactJS_Github_Profile_Viewer/master/src/img/Profile_Viewer2.jpg)
 
 3. Browse next 30 users by clicking on the next button.
-![enter image description here](https://vipulmahadik.github.io/Profile_Viewer/static/media/Profile_Viewer3.deb43826.jpg)
+![enter image description here](https://raw.github.com/vipulmahadik/ReactJS_Github_Profile_Viewer/master/src/img/Profile_Viewer3.jpg)
 
 
 -------

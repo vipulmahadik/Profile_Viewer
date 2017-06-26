@@ -6,7 +6,6 @@ import './Search.css';
 import SingleUser from './SingleUser';
 import $ from 'jquery';
 import key from '../json/keys';
-import data from'../json/vipul.js';
 
 class Search extends Component{
 
