@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import $ from 'jquery';
 import './SingleUser.css'
 import {data2} from '../json/vipul';
-import key from '../json/keys';
+import key from '../json/key';
 import Repos from './Repos';
 
 class SingleUser extends Component{

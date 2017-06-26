@@ -4,7 +4,7 @@
 
 import React, {Component} from 'react';
 import $ from 'jquery';
-import key from '../json/keys';
+import key from '../json/key';
 import {IntlProvider, FormattedDate} from 'react-intl';
 
 class Repos extends Component{

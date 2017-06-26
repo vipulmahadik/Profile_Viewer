@@ -5,7 +5,7 @@ import React, {Component} from 'react';
 import './Search.css';
 import SingleUser from './SingleUser';
 import $ from 'jquery';
-import key from '../json/keys';
+import key from '../json/key';
 
 class Search extends Component{
 
